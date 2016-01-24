@@ -1,0 +1,21 @@
+{
+  "name": "capstone",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "chrissschin <solischris92@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularfire": "~1.1.3"
+  }
+}
