@@ -7,24 +7,10 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
 <body ng-controller="mainCtrl as main">
-    <div class="main-app-header container">
-        <div class="row">
-            <header class="text-center"><h1>WYA</h1></header>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <button ng-click='main.twitterAuth()' class="btn btn-primary">Twitter Login</button>
-            </div>
-            <div class="col-xs-12 text-center">
-                <button ng-click='main.faceBookAuth()' class="btn btn-primary">Facebook Login</button>
-            </div>    
-        </div>
-    </div>
+    <ui-view>
 
-    
-    
+    </ui-view>
+ 
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>

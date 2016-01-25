@@ -1,15 +1,15 @@
 angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap'])
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
     .config(function($stateProvider,$urlRouterProvider) {
-        $urlRouterProvider.otherwise('./login')
+        $urlRouterProvider.otherwise('/')
         
         $stateProvider
             .state('login', {
                 url: '/login',
-                templateUrl: 'index.html'
+                templateUrl: 'views/login.html'
             })
-            .state('main',{
-                url: '/main',
-                templateUrl: 'main.html'
+            .state('serve-look', {
+                url: '/serve-look',
+                templateUrl: 'views/serve-look.html'
             })
     });

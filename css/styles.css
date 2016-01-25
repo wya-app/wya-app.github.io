@@ -1,3 +1,9 @@
+*, *::before, *::after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
 html, body {
   height: 100%; }
 
@@ -8,3 +14,19 @@ html, body {
   height: 50%; }
   .main-app-header h1 {
     color: #fffff8; }
+
+.serving,
+.looking {
+  height: 50%;
+  position: relative; }
+  .serving .content,
+  .looking .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.serving:hover,
+.looking:hover {
+  background: rgba(157, 70, 63, 0.5);
+  color: white; }
