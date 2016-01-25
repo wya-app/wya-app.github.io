@@ -1,7 +1,11 @@
 angular.module('WYA-App')
-    .controller('mainCtrl', function(auth){
+    .controller('mainCtrl', function(twitAuth, fbAuth){
         this.twitterAuth = function() {
-            auth.login();
+            twitAuth.login();
         }
-        auth.onAuth();
+        twitAuth.onAuth();
+        
+        this.faceBookAuth = function() {
+            fbAuth.login();
+        }
     })

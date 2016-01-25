@@ -1,5 +1,5 @@
 angular.module('WYA-App')
-    .factory('auth', function(BASE_URL){
+    .factory('twitAuth', function(BASE_URL){
         var self = this;
         var ref = new Firebase(BASE_URL);        
         return {
@@ -19,4 +19,20 @@ angular.module('WYA-App')
                 })
             }
         }
+    })
+    .factory('fbAuth', function(BASE_URL) {
+        var self = this;
+        var ref = new Firebase(BASE_URL);
+        return {
+            login: function() {
+                ref.authWithOAuthPopup("facebook", function(error, authData) {
+                   if (error) {
+                       console.log("Login Failed!", error);
+                   } else {
+                       console.log("Authentication successfully with payload:", authData);
+                   }
+                });
+            }
+        }
+        
     });

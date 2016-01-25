@@ -7,9 +7,22 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
 <body ng-controller="mainCtrl as main">
-    <h1>Hello Everyone</h1>
-    <button ng-click='main.twitterAuth()' class="btn btn-primary">Twitter</button>
-    <button class="btn btn-primary">Facebook</button>
+    <div class="main-app-header container">
+        <div class="row">
+            <header class="text-center"><h1>WYA</h1></header>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <button ng-click='main.twitterAuth()' class="btn btn-primary">Twitter Login</button>
+            </div>
+            <div class="col-xs-12 text-center">
+                <button ng-click='main.faceBookAuth()' class="btn btn-primary">Facebook Login</button>
+            </div>    
+        </div>
+    </div>
+
     
     
     <script src="node_modules/angular/angular.min.js"></script>

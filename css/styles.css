@@ -1,0 +1,10 @@
+html, body {
+  height: 100%; }
+
+.main-app-header {
+  background-image: url(../images/foodtruck.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 50%; }
+  .main-app-header h1 {
+    color: #fffff8; }
