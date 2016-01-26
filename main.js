@@ -1,4 +1,4 @@
-angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap'])
+angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase'])
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
     .config(function($stateProvider,$urlRouterProvider) {
         $urlRouterProvider.otherwise('/')

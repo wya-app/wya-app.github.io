@@ -15,6 +15,12 @@ html, body {
   .main-app-header h1 {
     color: #fffff8; }
 
+.twit-btn {
+  overflow: visible;
+  position: relative;
+  margin-bottom: 20px;
+  top: -22px; }
+
 .serving,
 .looking {
   height: 50%;

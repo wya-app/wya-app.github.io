@@ -1,11 +1,26 @@
 angular.module('WYA-App')
-    .controller('mainCtrl', function(twitAuth, fbAuth){
-        this.twitterAuth = function() {
-            twitAuth.login();
-        }
-        twitAuth.onAuth();
+    .controller('mainCtrl', function($location, $state, Auth){
+        var self = this;
         
-        this.faceBookAuth = function() {
-            fbAuth.login();
+        this.twitterAuth = function() {
+            Auth.tLogin();
+        
         }
+        this.faceBookAuth = function() {
+            Auth.fbLogin();
+        }
+        
+        this.logout = function() {
+            Auth.logOut();
+        }
+        
+        Auth.onAuth(function(userData){
+           if (userData === null) {
+               return $state.go('login');
+           } else {
+               self.user = userData;
+               return $state.go('serve-look');
+           }
+     
+        });
     })
