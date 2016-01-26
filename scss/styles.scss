@@ -33,9 +33,9 @@ body {
     }
 }
 
-.btn {
-    border-radius: 0;
-}
+// .btn {
+//     border-radius: 0;
+// }
 
 .btn-main {
     color: white;
@@ -61,6 +61,7 @@ video#bgvid {
     background: url(polina.jpg) no-repeat;
     background-size: cover;
     opacity: .8; 
+    border-bottom: 5px solid black;
 }
 
 .twit-btn {

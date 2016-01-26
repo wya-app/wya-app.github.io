@@ -23,9 +23,6 @@ body {
     border: 5px solid #fffff8;
     padding: 15px; }
 
-.btn {
-  border-radius: 0; }
-
 .btn-main {
   color: white;
   background-color: #9d463f;
@@ -46,7 +43,8 @@ video#bgvid {
   transform: translateX(-50%) translateY(-50%);
   background: url(polina.jpg) no-repeat;
   background-size: cover;
-  opacity: .8; }
+  opacity: .8;
+  border-bottom: 5px solid black; }
 
 .twit-btn {
   overflow: visible;
