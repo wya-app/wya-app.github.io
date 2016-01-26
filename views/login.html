@@ -1,4 +1,8 @@
     <div class="main-app-header container">
+        <video autoplay loop muted poster="videos/food.jpg" id="bgvid">
+            <!--<source src="videos/food.webm" type="video/webm">-->
+            <source src="videos/food.mp4" type="video/mp4">
+        </video>
         <div class="row">
             <header class="text-center"><h1>WYA</h1></header>
         </div>
@@ -6,17 +10,17 @@
     <div class="container">
         <div class="row twit-btn">
             <div class="col-xs-12 text-center">
-                <button ng-click='main.twitterAuth()' class="btn btn-primary">Twitter Login</button>
+                <button ng-click='main.twitterAuth()' class="btn btn-main btn-block">Twitter Login</button>
             </div>
         </div>
         <div class="row fb-btn">    
             <div class="col-xs-12 text-center">
-                <button ng-click='main.faceBookAuth()' class="btn btn-primary">Facebook Login</button>
+                <button ng-click='main.faceBookAuth()' class="btn btn-main btn-block">Facebook Login</button>
             </div>    
         </div>
-          <div class="row fb-btn">    
+          <!--<div class="row fb-btn">    
             <div class="col-xs-12 text-center">
                 <button ng-click='main.logOut()' class="btn btn-primary">logout</button>
-            </div>    
+            </div>    -->
         </div>
     </div>

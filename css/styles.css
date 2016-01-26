@@ -7,19 +7,52 @@
 html, body {
   height: 100%; }
 
+body {
+  background-color: #f7f7f9; }
+
 .main-app-header {
-  background-image: url(../images/foodtruck.jpg);
+  position: relative;
   background-position: center;
   background-size: cover;
-  height: 50%; }
+  height: 75%; }
   .main-app-header h1 {
-    color: #fffff8; }
+    position: absolute;
+    top: 5%;
+    left: 25px;
+    color: #fffff8;
+    border: 5px solid #fffff8;
+    padding: 15px; }
+
+.btn {
+  border-radius: 0; }
+
+.btn-main {
+  color: white;
+  background-color: #9d463f;
+  border-color: #9d463f; }
+
+video#bgvid {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 75%;
+  width: auto;
+  height: 100%;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(polina.jpg) no-repeat;
+  background-size: cover;
+  opacity: .8; }
 
 .twit-btn {
   overflow: visible;
   position: relative;
   margin-bottom: 20px;
-  top: -22px; }
+  top: -15px; }
 
 .serving,
 .looking {
