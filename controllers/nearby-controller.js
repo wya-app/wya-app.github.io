@@ -1,7 +1,8 @@
 angular.module("WYA-App")
-    .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL) {
-       //map marking 
+    .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, $http) {
        var self = this;
+       
+       //map marking 
        var lat = $stateParams.currentLocation.lat;
        var lon = $stateParams.currentLocation.lon;
        
@@ -28,6 +29,12 @@ angular.module("WYA-App")
        
        this.saveLocation = function() {
            locations.$add(self.currentLocation);
-       }
+       };
+
+        $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'&key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0').then(function successCallback(response) {
+            console.log(response);
+        }, function errorCallback(response) {
+            console.log('failed to get');
+        });       
 
     })

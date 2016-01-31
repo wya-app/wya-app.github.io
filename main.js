@@ -1,6 +1,6 @@
 angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','uiGmapgoogle-maps' ])
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
-    .config(function($stateProvider,$urlRouterProvider, uiGmapGoogleMapApiProvider) {
+    .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
         $urlRouterProvider.otherwise('/')
         
         $stateProvider

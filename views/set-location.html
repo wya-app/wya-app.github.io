@@ -1,13 +1,24 @@
+
 <div class="container-fluid">
     <div class="row-fluid map-holder">
         <div class="col-xs-12 col-sm-6">
-            <h1>BIG MAP</h1>
+            <ui-gmap-google-map center='nearby.map.center' zoom='nearby.map.zoom'>
+                
+                <ui-gmap-marker 
+                coords="nearby.marker.coords" 
+                idkey="nearby.marker.id">
+                </ui-gmap-marker>
+                
+            </ui-gmap-google-map>
         </div>
-    </div>
     
     <div class="row-fluid results-list">
         <div class="col-xs-12 col-sm-6">
-        <h2>YOU ARE NOW SET</h2>
+        <h2>You are now set</h2>
         </div>
     </div>
+    
+    <button ng-click="nearby.saveLocation()" class="btn btn-default">Save location</button>
+    
+    
 </div>
