@@ -26,9 +26,9 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
                 controller: 'nearbyCtrl as nearby'
             })
             
-            .state('set-location', {
-                url: '/set-location',
-                templateUrl: 'views/set-location.html'
+            .state('cook-location', {
+                url: '/cook-location',
+                templateUrl: 'views/cook-location.html'
             })
             .state('set-time', {
                 url: '/set-time',

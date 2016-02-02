@@ -32,7 +32,25 @@ angular.module("WYA-App")
        };
 
         $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'&key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0').then(function successCallback(response) {
-            console.log(response);
+            var address = response.data.results[0].formatted_address;
+            var addressComponents = response.data.results[0].address_components;
+            self.postalCode;
+            
+            //get postal code from current lat and lon
+            for (var i = 0; i <= addressComponents.length; i++) {            
+                for (var j = 0; j <= addressComponents[i].types.length; j++) {
+                        if (addressComponents[i].types[j] === 'postal_code') {
+                            console.log(addressComponents[i].long_name);
+                            self.postalCode = addressComponents[i].long_name;                       
+                        }
+                    }
+                }
+            
+            
+            // console.log(address);
+            // console.log(response.data.results[0]);
+        
+            
         }, function errorCallback(response) {
             console.log('failed to get');
         });       
