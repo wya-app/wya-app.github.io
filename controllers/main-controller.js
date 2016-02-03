@@ -1,7 +1,8 @@
 angular.module('WYA-App')
-    .controller('mainCtrl', function($location, $state, Auth, $log, $timeout){
+    .controller('mainCtrl', function($location, $state, Auth, $log, $timeout, $http, lodash){
         var self = this;
-        
+        var _ = lodash;
+ 
         this.twitterAuth = function() {
             Auth.tLogin();
         
@@ -34,13 +35,39 @@ angular.module('WYA-App')
                lon: position.coords.longitude
            }
            
-                      
-           $state.go('nearby', {
-               currentLocation: currentPosition
-           });
-           
+            var lat = currentPosition.lat;
+            var lon = currentPosition.lon;
+            var zip = "";
+                                    
+            $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'&key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0').then(function successCallback(response) {
+                var address = response.data.results[0].formatted_address;
+                var addressComponents = response.data.results[0].address_components;
+                
+                
+               _.forEach(addressComponents, function(value){
+                    if (value.types[0] === 'postal_code') {
+                        console.log(value);
+                        zip = value.long_name;
+                    }
+               })
+                   
+
+                   
+         
+                
+                //needs error check vvv
+                $state.go('nearby', {
+                    currentLocation: currentPosition,
+                    zipCode: zip
+                });       
+                
+            }, function errorCallback(response) {
+                console.log('failed to get');
+            });           
+     
            console.log(currentPosition.lat);
-           console.log(currentPosition.lon); 
+           console.log(currentPosition.lon);
+            
            });
 
 

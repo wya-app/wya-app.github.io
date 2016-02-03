@@ -1,6 +1,6 @@
 'use-strict'
 
-angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','uiGmapgoogle-maps' ])
+angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','uiGmapgoogle-maps','ngLodash' ])
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
     .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
         $urlRouterProvider.otherwise('/')
@@ -25,7 +25,7 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
                 params: {
                     currentLocation: {}
                 },
-                controller: 'nearbyCtrl as nearby'
+                controller: 'nearbyCtrl as nearby',
             })
             
             .state('cook-location', {

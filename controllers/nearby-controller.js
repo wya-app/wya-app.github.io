@@ -4,13 +4,16 @@ angular.module("WYA-App")
     .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, $http) {
        var self = this;
        
+       
+       this.zipCode = $stateParams.zipCode;
+       
        //map marking 
        var lat = $stateParams.currentLocation.lat;
        var lon = $stateParams.currentLocation.lon;
        
        this.currentLocation = $stateParams.currentLocation;
        
-       if(!$stateParams.currentLocation.lat) {
+       if(!$stateParams.currentLocation.lat || this.zipCode === "") {
            $state.go('get-location');
        }
        
@@ -26,30 +29,19 @@ angular.module("WYA-App")
        
        console.log($stateParams);
        
-       var ref = new Firebase(BASE_URL + "food/90745");
-       var locations = $firebaseArray(ref);
+       //think about if theres empty areas with no trucks *** run a check
        
+           
+        this.ref = new Firebase(BASE_URL +"food/"+ this.zipCode );
+        this.locations = $firebaseArray(this.ref);
+        
        this.saveLocation = function() {
-           locations.$add(self.currentLocation);
+           self.locations.$add(self.currentLocation);
        };
-
-        $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'&key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0').then(function successCallback(response) {
-            var address = response.data.results[0].formatted_address;
-            var addressComponents = response.data.results[0].address_components;
-            var postalCode;
-            
-            //get postal code from current lat and lon
-            for (var i = 0; i <= addressComponents.length; i++) {            
-                for (var j = 0; j <= addressComponents[i].types.length; j++) {
-                        if (addressComponents[i].types[j] === 'postal_code') {
-                            console.log(addressComponents[i].long_name);
-                            postalCode = addressComponents[i].long_name;                       
-                        }
-                    }
-                }  
-            
-        }, function errorCallback(response) {
-            console.log('failed to get');
-        });       
+       
+        
+        
+        //there should be a func that pulls the lat and lon from firebase
+        //then will be able to ng-repeat in the array and assign each a marker       
 
     })
