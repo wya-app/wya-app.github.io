@@ -20,7 +20,7 @@ angular.module('WYA-App')
                user.update({
                    uid: userData.uid,
                    displayName: userData.facebook.displayName
-               })
+               });
             }
 
             user = $firebaseObject(user);
