@@ -1,6 +1,8 @@
-angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','uiGmapgoogle-maps' ])
+'use-strict'
+
+angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','uiGmapgoogle-maps','ngLodash' ])
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
-    .config(function($stateProvider,$urlRouterProvider, uiGmapGoogleMapApiProvider) {
+    .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
         $urlRouterProvider.otherwise('/')
         
         $stateProvider
@@ -18,21 +20,30 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
             })
             
             .state('nearby', {
-                url: '/nearby',
+                url: '/nearby/:zipCode',
                 templateUrl: 'views/nearby.html',
                 params: {
                     currentLocation: {}
                 },
-                controller: 'nearbyCtrl as nearby'
+                controller: 'nearbyCtrl as nearby',
             })
             
-            .state('set-location', {
-                url: '/set-location',
-                templateUrl: 'views/set-location.html'
+            .state('cook-location', {
+                url: '/cook-location',
+                templateUrl: 'views/cook-location.html',
+                params: {
+                  currentLocation: {}  
+                },
+                controller: 'cooksCtrl as cook'
+                
             })
             .state('set-time', {
-                url: '/set-time',
+                url: '/set-time/',
                 templateUrl: 'views/set-time.html',
+                params: {
+                  currentLocation: {}  
+                },
+                controller: 'cooksCtrl as cook'
             })
                                
        
