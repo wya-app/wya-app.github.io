@@ -13,43 +13,36 @@ angular.module('WYA-App')
                lon: position.coords.longitude
            }
            
-                      
-           $state.go('cook-map', {
-               currentLocation: currentPosition
-           });
+           var lat = currentPosition.lat;
+           var lon = currentPosition.lon;
+           var zip = "";           
            
+             $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'&key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0').then(function successCallback(response) {
+                var addressComponents = response.data.results[0].address_components;
+                
+                
+                
+               _.forEach(addressComponents, function(value){
+                    if (value.types[0] === 'postal_code') {
+                        console.log(value);
+                        zip = value.long_name;
+                    }
+               });
+                
+                //needs error check vvv
+                $state.go('cook-map', {
+                    currentLocation: currentPosition,
+                    zipCode: zip
+                });       
+                
+            }, function errorCallback(response) {
+                console.log('failed to get');
+            });           
+     
            console.log(currentPosition.lat);
-           console.log(currentPosition.lon); 
-           });
-
-
+           console.log(currentPosition.lon);
+           console.log(zip);
+            
+           });          
        }   
-       
-       //shows / sets map with current position 
-       var lat = $stateParams.currentLocation.lat;
-       var lon = $stateParams.currentLocation.lon;
-       
-       this.currentLocation = $stateParams.currentLocation;
-       
-       if(!$stateParams.currentLocation.lat) {
-           $state.go('cook-set-time');
-       }
-       
-       this.map = {center: {latitude: lat, longitude: lon }, zoom: 14 };
-       
-       this.marker = {
-           id: 0,
-           coords: {
-                latitude: lat,
-                longitude: lon
-           }
-       }   
-        
-               
-       this.saveLocation = function() {
-           self.locations.$add(self.currentLocation);
-       };
-        
-        
-
     })

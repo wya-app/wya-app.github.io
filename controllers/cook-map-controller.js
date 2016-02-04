@@ -1,13 +1,21 @@
+'use-strict'
+
 angular.module("WYA-App")
     .controller("cookMapCtrl", function($stateParams, $state, $firebaseArray, BASE_URL, $http){
                
-       //shows / sets map with current position 
+       var self = this;
+    
+       
+       this.zipCode = $stateParams.zipCode;
+       this.address = $stateParams.curAddress;
+       
+       //map marking 
        var lat = $stateParams.currentLocation.lat;
        var lon = $stateParams.currentLocation.lon;
        
        this.currentLocation = $stateParams.currentLocation;
        
-       if(!$stateParams.currentLocation.lat) {
+       if(!$stateParams.currentLocation.lat || this.zipCode === "") {
            $state.go('cook-set-time');
        }
        
@@ -20,7 +28,10 @@ angular.module("WYA-App")
                 longitude: lon
            }
        }
-          
+       
+       console.log($stateParams);
+       
+       
        this.ref = new Firebase(BASE_URL +"food/"+ this.zipCode );
        this.locations = $firebaseArray(this.ref); 
         

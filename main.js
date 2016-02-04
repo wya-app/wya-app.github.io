@@ -33,7 +33,7 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
             
             // cook views
             .state('cook-map', {
-                url: '/cook-map',
+                url: '/cook-map/:zipCode',
                 templateUrl: 'views/cook-map.html',
                 params: {
                   currentLocation: {}  
@@ -41,6 +41,7 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
                 controller: 'cookMapCtrl as cookMap'
                 
             })
+            
             .state('cook-set-time', {
                 url: '/cook-set-time',
                 templateUrl: 'views/cook-set-time.html',
