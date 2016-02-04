@@ -16,7 +16,8 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
             })
             .state('get-location', {
                 url: '/get-location',
-                templateUrl: 'views/get-location.html'
+                templateUrl: 'views/get-location.html',
+                controller: 'getLocationCtrl as location'
             })
             
             .state('nearby', {
@@ -39,7 +40,7 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
             })
             .state('set-time', {
                 url: '/set-time/',
-                templateUrl: 'views/set-time.html',
+                templateUrl: 'views/cook-set-time.html',
                 params: {
                   currentLocation: {}  
                 },

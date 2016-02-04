@@ -44,6 +44,12 @@ angular.module('WYA-App')
                 longitude: lon
            }
        }   
- 
+        
+               
+       this.saveLocation = function() {
+           self.locations.$add(self.currentLocation);
+       };
+        
+        
 
     })

@@ -4,11 +4,21 @@
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
 
+a {
+  text-decoration: none; }
+
 html, body {
   height: 100%; }
 
 body {
   background-color: #f7f7f9; }
+
+.fixed-header {
+  background-color: #9d463f; }
+  .fixed-header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #fffff8; }
 
 .main-app-header {
   position: relative;
@@ -32,7 +42,6 @@ video#bgvid {
   position: fixed;
   top: 25%;
   left: 50%;
-  min-width: 100%;
   min-height: 75%;
   width: auto;
   height: 100%;
@@ -52,21 +61,24 @@ video#bgvid {
   margin-bottom: 20px;
   top: -15px; }
 
+.desktop-head {
+  position: relative; }
+
 .serving,
 .looking {
   height: 50%;
   position: relative; }
-  .serving .content,
-  .looking .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
 
 .serving:hover,
 .looking:hover {
   background: rgba(157, 70, 63, 0.5);
   color: white; }
+
+.serving a h1,
+.looking a h1 {
+  border: 5px solid black;
+  padding: 15px;
+  text-decoration: none !important; }
 
 #map {
   height: 50%; }
@@ -82,3 +94,14 @@ video#bgvid {
 
 .angular-google-map-container {
   height: 400px; }
+
+.results-list,
+.map-holder {
+  height: 50%; }
+
+@media only screen and (min-width: 768px) {
+  header {
+    display: table;
+    margin: 0 auto;
+    position: relative;
+    left: -25%; } }
