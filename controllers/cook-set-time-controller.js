@@ -1,5 +1,5 @@
 angular.module('WYA-App')
-    .controller('cooksCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, $http) {
+    .controller('cookSetTimeCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, $http) {
        var self = this;
        
        //gets the current location with lon and lat
@@ -14,7 +14,7 @@ angular.module('WYA-App')
            }
            
                       
-           $state.go('cook-location', {
+           $state.go('cook-map', {
                currentLocation: currentPosition
            });
            
@@ -32,7 +32,7 @@ angular.module('WYA-App')
        this.currentLocation = $stateParams.currentLocation;
        
        if(!$stateParams.currentLocation.lat) {
-           $state.go('set-time');
+           $state.go('cook-set-time');
        }
        
        this.map = {center: {latitude: lat, longitude: lon }, zoom: 14 };

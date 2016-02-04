@@ -14,6 +14,8 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
                 url: '/serve-look',
                 templateUrl: 'views/serve-look.html'
             })
+            
+            // customer views
             .state('get-location', {
                 url: '/get-location',
                 templateUrl: 'views/get-location.html',
@@ -29,22 +31,23 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
                 controller: 'nearbyCtrl as nearby',
             })
             
-            .state('cook-location', {
-                url: '/cook-location',
-                templateUrl: 'views/cook-location.html',
+            // cook views
+            .state('cook-map', {
+                url: '/cook-map',
+                templateUrl: 'views/cook-map.html',
                 params: {
                   currentLocation: {}  
                 },
-                controller: 'cooksCtrl as cook'
+                controller: 'cookMapCtrl as cookMap'
                 
             })
-            .state('set-time', {
-                url: '/set-time/',
+            .state('cook-set-time', {
+                url: '/cook-set-time',
                 templateUrl: 'views/cook-set-time.html',
                 params: {
                   currentLocation: {}  
                 },
-                controller: 'cooksCtrl as cook'
+                controller: 'cookSetTimeCtrl as cookTime'
             })
                                
        
