@@ -12,6 +12,8 @@ angular.module("WYA-App")
        //map marking 
        var lat = $stateParams.currentLocation.lat;
        var lon = $stateParams.currentLocation.lon;
+    //    var lat = 33.821829;
+    //    var lon = -118.280217;
        
        this.currentLocation = $stateParams.currentLocation;
        
@@ -32,7 +34,7 @@ angular.module("WYA-App")
        console.log($stateParams);
        
        
-       this.ref = new Firebase(BASE_URL +"food/"+ this.zipCode );
+       this.ref = new Firebase(BASE_URL +"food/90745");
        this.locations = $firebaseArray(this.ref); 
         
                

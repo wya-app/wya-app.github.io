@@ -29,6 +29,13 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
                     currentLocation: {}
                 },
                 controller: 'nearbyCtrl as nearby',
+                resolve: {
+                    locations: function($stateParams, $firebaseArray, BASE_URL) {
+                       var ref = new Firebase(BASE_URL +"food/"+ $stateParams.zipCode );
+                       return $firebaseArray(ref);
+    
+                    }
+                }
             })
             
             // cook views
