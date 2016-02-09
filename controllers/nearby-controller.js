@@ -25,25 +25,25 @@ angular.module("WYA-App")
        //if array empty have some kind of return (like go back to prev route)
         .then(function(data) {
             console.log(data);
-            self.markers1 = data;
-            console.log(self.markers1[0].lat);
-            // self.markers = {
-            //     id: data.indexOf(data),
-            //     coords: {
-            //             latitude: data.lat,
-            //             longitude: data.lon
-            //     }
-            // }
-            // self.marker2 = {
-            //     id: 1,
-            //     coords: {
-            //             latitude: data[1].lat,
-            //             longitude: data[1].lon
-            //     }
-            // }
-            // //store data in an array
-            // // each index should be the id
-            // self.markers = data;                         
+            // self.markers1 = data;
+            // console.log(self.markers1[0].lat);
+            
+            self.marker = {
+                id: 0,
+                coords: {
+                        latitude: data[0].lat,
+                        longitude: data[0].lon
+                }
+            }
+            self.marker2 = {
+                id: 1,
+                coords: {
+                        latitude: data[1].lat,
+                        longitude: data[1].lon
+                }
+            }
+            //store data in an array
+            // each index should be the id                      
         });
        
     //    console.log($stateParams);

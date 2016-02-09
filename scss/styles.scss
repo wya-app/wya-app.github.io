@@ -14,6 +14,7 @@ a {
 
 html, body {
     height: 100%;
+    width: 100%;
 }
 
 body {
@@ -90,23 +91,39 @@ video#bgvid {
 
 .serving,
 .looking {
-    height: 50%;
-    position: relative;
+    .vert {
+        height: 30rem;
+        position: relative; 
+        a {
+            margin: 0;
+            padding: 100px;
+            border: 5px solid black;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+        a:hover {
+            background: $hover-color;  
+        }
+    }
 
 }
 
-.serving:hover,
-.looking:hover {
-    background: $hover-color;
-    color: white;
+.ln-break {
+    margin-top: 15px;
+    margin-botton: 15px;
+    width: 50px;
+    border-top: 5px solid rgb(157,70,63);
 }
 
-.serving a h1,
-.looking a h1{ 
-    border: 5px solid black;;
-    padding: 15px;
-    text-decoration: none !important;
-}
+// .serving:hover,
+// .looking:hover {
+//     background: $hover-color;
+//     color: white;
+// }
 
 
 //get location page

@@ -1,7 +1,28 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-            <button class="btn btn-default btn-block" ng-click="cookTime.GetLocation.getLocation()">SET PIN</button>
+            <button class="btn btn-default btn-block" ng-click="cookTime.getLoc()">SET PIN</button>
         </div>
     </div>
+    <uib-timepicker ng-model="cookTime.mytime" ng-change="cookTime.changed()" hour-step="cookTime.hstep" minute-step="cookTime.mstep" show-meridian="cookTime.ismeridian"></uib-timepicker>
+
+    <pre class="alert alert-info">Time is: {{cookTime.mytime | date:'shortTime' }}</pre>
+
+    <div class="row"> 
+        <div class="col-xs-6">
+            Hours step is:
+        <select class="form-control" ng-model="cookTime.hstep" ng-options="opt for opt in cookTime.options.hstep"></select>
+        </div>
+        <div class="col-xs-6">
+            Minutes step is:
+        <select class="form-control" ng-model="cookTime.mstep" ng-options="opt for opt in cookTime.options.mstep"></select>
+        </div>
+    </div>
+
+    <hr>
+
+    <button type="button" class="btn btn-info" ng-click="cookTime.toggleMode()">12H / 24H</button>
+    <button type="button" class="btn btn-default" ng-click="cookTime.update()">Set to 14:00</button>
+    <button type="button" class="btn btn-danger" ng-click="cookTime.clear()">Clear</button>
+    
 </div>

@@ -1,5 +1,5 @@
 angular.module("WYA-App")
-    .factory("GetLocation", function($stateParams, $state, $firebaseArray, BASE_URL, $http) {
+    .factory("GetLocation", function($state,$http) {
         return {
        
                 //gets the current location with lon and lat
@@ -11,8 +11,7 @@ angular.module("WYA-App")
                     var currentPosition = {
                         lat: position.coords.latitude,
                         lon: position.coords.longitude
-                        // lat:33.821829,
-                        // lon:-118.280217
+
                     }
                     
                     var lat = currentPosition.lat;
@@ -39,11 +38,7 @@ angular.module("WYA-App")
                         }, function errorCallback(response) {
                             console.log('failed to get');
                         });           
-                
-                    console.log(currentPosition.lat);
-                    console.log(currentPosition.lon);
-                    console.log(zip);
-                        
+
                     });          
                 }                  
 
