@@ -59,6 +59,9 @@ angular.module('WYA-App')
             
             getCurrentUser: function() {
                 return currentUser;
+            },
+            getUserFire: function() {
+                return new Firebase;
             }
         }
     })

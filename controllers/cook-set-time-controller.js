@@ -1,38 +1,30 @@
 angular.module('WYA-App')
-    .controller('cookSetTimeCtrl', function($stateParams, $state, $firebaseArray, $log, BASE_URL, $http, GetLocation) {
+    .controller('cookSetTimeCtrl', function($stateParams, $state, $firebaseObject, $log, BASE_URL, Auth, $http, GetLocation) {
        var self = this;
+       var current = Auth.getCurrentUser();
+       var ref = new Firebase(BASE_URL + 'users/' + current.uid);
+       this.title = '';
+       this.description = '';
+       this.user = $firebaseObject(ref);
+       
+       this.saveCookInfo = function() {
+           self.user.$add({
+               title: self.title,
+               description: self.description
+           })
+           console.log("click");
+       }
        
        this.getLoc = function() {
+           if (!self.user.title || !self.user.description) {
+               return alert("Please enter a title and description");
+           }
             GetLocation.getLocation('cook-map');
        }
-        this.mytime = new Date();
-
-        this.hstep = 1;
-        this.mstep = 15;
-
-        this.options = {
-            hstep: [1, 2, 3],
-            mstep: [1, 5, 10, 15, 25, 30]
-        };
-
-        this.ismeridian = true;
-        this.toggleMode = function() {
-            self.ismeridian = ! self.ismeridian;
-        };
-
-        this.update = function() {
-            var d = new Date();
-            d.setHours( 14 );
-            d.setMinutes( 0 );
-            this.mytime = d;
-        };
-
-        this.changed = function () {
-            $log.log('Time changed to: ' + this.mytime);
-        };
-
-        this.clear = function() {
-            self.mytime = null;
-        };
        
+       console.log(current.uid);
+       
+       
+
     })
+    

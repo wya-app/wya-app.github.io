@@ -1,7 +1,7 @@
 'use-strict'
 
 angular.module("WYA-App")
-    .controller("cookMapCtrl", function($stateParams, $state, $firebaseArray, BASE_URL, $http){
+    .controller("cookMapCtrl", function($stateParams, $state, $firebaseArray, BASE_URL, $http, Auth){
                
        var self = this;
     
@@ -25,26 +25,33 @@ angular.module("WYA-App")
            id: 0,
            coords: {
                 latitude: lat,
-                longitude: lon
+                longitude: lon                
            }
+           
        }
        
        console.log($stateParams);
        
        
        this.ref = new Firebase(BASE_URL +"food/90745");
-       this.locations = $firebaseArray(this.ref); 
+       this.locations = $firebaseArray(this.ref);
+       
+       var current = Auth.getCurrentUser(); 
         
                
        this.saveLocation = function() {
            self.locations.$add({
                id: self.locations.length,
                coords: {
-                   lattitude: lat,
+                   latitude: lat,
                    longitude: lon
-               }
+               },
+               title: current.title,
+               description: current.description
+               
            });
         console.log(self.locations.length);
+        console.log($firebaseArray(self.ref));
        };
        
        

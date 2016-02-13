@@ -21,6 +21,17 @@ body {
     margin-bottom: 0;
     color: #fffff8; }
 
+.navbar-default {
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.175);
+  background-color: #9d463f;
+  border-color: #9d463f; }
+  .navbar-default .navbar-brand {
+    color: white; }
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: lightgray; }
+
 .main-app-header {
   position: relative;
   background-position: center;
@@ -114,3 +125,6 @@ video#bgvid {
     margin: 0 auto;
     position: relative;
     left: -25%; } }
+
+.control-label {
+  text-align: left !important; }

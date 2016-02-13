@@ -1,21 +1,21 @@
-<div class="fixed-header">
-    <h1>WYA</h1>
-</div>
-<div class="container-fluid">
-    <div class="row-fluid map-holder">
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container nav-color">
+    <a class="navbar-brand" href="#">WYA</a>
+  </div>
+</nav>
+<div class="container">
+    <div class="row map-holder">
         <div class="col-xs-12 col-sm-6">
             <ui-gmap-google-map center='nearby.map.center' zoom='nearby.map.zoom'>
                 
-                <ui-gmap-marker
-                coords="nearby.marker.coords" 
-                idkey="nearby.marker.id">
-                </ui-gmap-marker>
+                <ui-gmap-markers
+                models='nearby.markers'
+                coords="'coords'">
+                </ui-gmap-markers>
+                                <!--id='nearby.data.id' 
                 
-                <ui-gmap-marker
-                coords="nearby.marker2.coords" 
-                idkey="nearby.marker2.id">
-                </ui-gmap-marker>
-                
+                icon='icon'
+                -->
                 
             </ui-gmap-google-map>
         </div>

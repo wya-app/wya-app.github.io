@@ -28,6 +28,22 @@ body {
         color: #fffff8;
     }
 }
+
+.navbar-default {
+   -webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.175);
+   box-shadow: 0 3px 3px rgba(0,0,0,0.175);   
+   background-color: rgb(157,70,63);
+   border-color:rgb(157,70,63); 
+     .navbar-brand {
+        color: white;
+    }
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: lightgray;
+}
+
+
 .main-app-header {
     // background-image: url(../images/mainpic.jpg);
     position: relative;
@@ -161,4 +177,11 @@ video#bgvid {
         position: relative;
         left: -25%;
     }
+}
+
+
+//cook set time page
+
+.control-label {
+    text-align: left !important;
 }
