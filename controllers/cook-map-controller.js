@@ -46,9 +46,10 @@ angular.module("WYA-App")
                    latitude: lat,
                    longitude: lon
                },
-               title: current.title,
-               description: current.description
-               
+               options: {
+                title: current.title,
+                label: current.label                   
+               },
            });
         console.log(self.locations.length);
         console.log($firebaseArray(self.ref));

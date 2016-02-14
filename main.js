@@ -1,6 +1,7 @@
 'use-strict'
 
-angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','uiGmapgoogle-maps','ngLodash' ])
+angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','uiGmapgoogle-maps','ngLodash','ngMap' ])
+    .constant('GOOGLE_MAPS_URL', "https://maps.googleapis.com/maps/api/js?key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0")
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
     .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
         $urlRouterProvider.otherwise('/')

@@ -20,20 +20,11 @@ angular.module("WYA-App")
        
        this.map = {center: {latitude: lat, longitude: lon }, zoom: 14 };
        
-       locations.$loaded() //<< look this up 
-       //look a way to check if there is any data
+       locations.$loaded() 
        //if array empty have some kind of return (like go back to prev route)
         .then(function(data) {
-            console.log(data);
-    
-           self.markers = data;                    
+           console.log(data);
+           self.markers = data;
+           console.log(self.markers[0].label);                
         });
-       
-    //    console.log($stateParams);
-       
-       //think about if theres empty areas with no trucks *** run a check
-         
-        //there should be a func that pulls the lat and lon from firebase
-        //then will be able to ng-repeat in the array and assign each a marker       
-
     })

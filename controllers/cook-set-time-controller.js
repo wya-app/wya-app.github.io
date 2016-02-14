@@ -4,19 +4,19 @@ angular.module('WYA-App')
        var current = Auth.getCurrentUser();
        var ref = new Firebase(BASE_URL + 'users/' + current.uid);
        this.title = '';
-       this.description = '';
+       this.label = '';
        this.user = $firebaseObject(ref);
        
        this.saveCookInfo = function() {
            self.user.$add({
                title: self.title,
-               description: self.description
+               label: self.label
            })
            console.log("click");
        }
        
        this.getLoc = function() {
-           if (!self.user.title || !self.user.description) {
+           if (!self.user.title || !self.user.label) {
                return alert("Please enter a title and description");
            }
             GetLocation.getLocation('cook-map');
