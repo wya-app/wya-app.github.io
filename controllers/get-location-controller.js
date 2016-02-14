@@ -6,5 +6,6 @@ angular.module('WYA-App')
            
           GetLocation.getLocation('nearby');
        }
+       
               
     })

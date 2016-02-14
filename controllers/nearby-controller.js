@@ -9,22 +9,27 @@ angular.module("WYA-App")
        this.address = $stateParams.curAddress;
        
        //map marking 
-       var lat = $stateParams.currentLocation.lat;
-       var lon = $stateParams.currentLocation.lon;
+       this.lat = $stateParams.currentLocation.lat;
+       this.lon = $stateParams.currentLocation.lon;
        
        this.currentLocation = $stateParams.currentLocation;
+       
        
        if(!$stateParams.currentLocation.lat || this.zipCode === "") {
            $state.go('get-location');
        }
        
-       this.map = {center: {latitude: lat, longitude: lon }, zoom: 14 };
+       this.map = {center: {latitude: this.lat, longitude: this.lon }, zoom: 14 };
        
        locations.$loaded() 
        //if array empty have some kind of return (like go back to prev route)
-        .then(function(data) {
-           console.log(data);
-           self.markers = data;
-           console.log(self.markers[0].label);                
+        .then(function(results) {
+            
+           console.log(results);
+           
+           self.data = results;
+                          
         });
+        
+        console.log(self.data);
     })

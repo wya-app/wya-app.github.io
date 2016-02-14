@@ -16,23 +16,28 @@ angular.module("WYA-App")
                     
                     var lat = currentPosition.lat;
                     var lon = currentPosition.lon;
-                    var zip = "";           
+                    var zip = "";
+                    var address = "";           
                     
                         $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'&key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0').then(function successCallback(response) {
                             
-                        var addressComponents = response.data.results[0].address_components;
-                   
+                        var addressComponents = response.data.results[0].address_components;                 
+                                                       
+                        
                         _.forEach(addressComponents, function(value){
                                 if (value.types[0] === 'postal_code') {
                                     console.log(value);
                                     zip = value.long_name;
                                 }
                         });
-                            
+                        
+                        address= response.data.results[0].formatted_address;
+
                             //needs error check vvv
                             $state.go(stateGo, {
                                 currentLocation: currentPosition,
-                                zipCode: zip
+                                zipCode: zip,
+                                curAddress: address
                             });       
                             
                         }, function errorCallback(response) {
