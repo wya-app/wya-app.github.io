@@ -4,24 +4,21 @@
   </div>
 </nav>
 <div class="container">
-    <div class="row map-holder">
-        <div class="col-xs-12">
-            <ui-gmap-google-map center='cookMap.map.center' zoom='cookMap.map.zoom'>
-                
-                <ui-gmap-marker 
-                coords="cookMap.marker.coords" 
-                idkey="cookMap.marker.id">
-                </ui-gmap-marker>
-                
-            </ui-gmap-google-map>
-        </div>
-    </div>   
+
+    <leaflet 
+    width="100%" 
+    height="480px"
+    lf-center="center"
+    markers="markers">
+    </leaflet>
+
     <div class="results-list">
         <div class="col-xs-12 text-center">
-        <h2>You are now set</h2>
+        <h2>{{cookMap.confirmation}}</h2>
         </div>
         <hr class="ln-break">
-        <button ng-click="cookMap.saveLocation()" class="btn btn-default col-xs-6 col-xs-offset-3">Save Location</button>            
+        <button ng-click="cookMap.saveLocation()" class="btn btn-default col-xs-6 col-xs-offset-3">Confirm Location</button>            
         <button ui-sref="cook-set-time" class="btn btn-default col-xs-6 col-xs-offset-3">Go Back</button>          
 
     </div>
+</div>    

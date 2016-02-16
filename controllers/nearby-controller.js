@@ -1,7 +1,7 @@
 'use-strict'
 
 angular.module("WYA-App")
-    .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, locations, $http) {
+    .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, locations, $http, $scope) {
        var self = this;
     
        
@@ -9,8 +9,8 @@ angular.module("WYA-App")
        this.address = $stateParams.curAddress;
        
        //map marking 
-       this.lat = $stateParams.currentLocation.lat;
-       this.lon = $stateParams.currentLocation.lon;
+       var lat = $stateParams.currentLocation.lat;
+       var lon = $stateParams.currentLocation.lon;
        
        this.currentLocation = $stateParams.currentLocation;
        
@@ -19,7 +19,6 @@ angular.module("WYA-App")
            $state.go('get-location');
        }
        
-       this.map = {center: {latitude: this.lat, longitude: this.lon }, zoom: 14 };
        
        locations.$loaded() 
        //if array empty have some kind of return (like go back to prev route)
@@ -28,8 +27,23 @@ angular.module("WYA-App")
            console.log(results);
            
            self.data = results;
+           
                           
         });
         
-        console.log(self.data);
+       console.log(this.data);
+
+        angular.extend($scope, {
+            center: {
+                lat: lat,
+                lng: lon,
+                zoom: 16
+            },
+            markers: {
+              mark1: self.data
+            } 
+
+        });          
+        
+
     })
