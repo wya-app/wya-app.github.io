@@ -27,23 +27,23 @@ angular.module("WYA-App")
            console.log(results);
            
            self.data = results;
-           
-                          
+           if (results.length === 0) {
+               alert("no trucks here!");
+           }
+           self.markers = self.data;               
         });
         
        console.log(this.data);
 
-        angular.extend($scope, {
-            center: {
+       
+            this.center = {
                 lat: lat,
                 lng: lon,
                 zoom: 16
-            },
-            markers: {
-              mark1: self.data
-            } 
+            };
+            
 
-        });          
+       
         
 
     })

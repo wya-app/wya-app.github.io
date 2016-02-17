@@ -16,22 +16,38 @@
             <div class="form-group">
             <label class="col-xs-12 control-label pull-left" for="Stand Name">Stand Name</label>  
             <div class="col-xs-12">
-            <input ng-model="cookTime.user.title" name="Stand Name" type="text" placeholder="" class="form-control input-lg" required="">
+            <input ng-model="cookTime.title" name="Stand Name" type="text" placeholder="" class="form-control input-lg" required="">
             </div>
             </div>
+            
+            <!--time-->
+            <div class="form-group">
+            <label class="col-xs-12 control-label pull-left" for="Stand Name">END TIME</label>  
+            <div class="col-xs-12">
+             <p>           
+                <input id="endDate" type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="cookTime.endDate" is-open="cookTime.open" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="cookTime.openCal()">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+             </p> 
+            <span>{{ cookTime.endDate | date: "shortDate"}}</span>
+            </div>
+            </div>            
 
             <!-- Textarea -->
             <div class="form-group">
             <label class="col-xs-12 control-label" for="textarea">Description</label>
             <div class="col-xs-12">                     
-                <textarea ng-model="cookTime.user.description" class="form-control" id="textarea" name="textarea"></textarea>
+                <textarea ng-model="cookTime.description" class="form-control" id="textarea" name="textarea"></textarea>
             </div>
             </div>
 
             </fieldset>
             </form>
             
-            <button class="btn btn-default col-xs-6" ng-click="cookTime.user.$save()">SAVE INFO</button> 
+            <button class="btn btn-default col-xs-6" ng-click="cookTime.saveCookInfo()">SAVE INFO</button> 
             <button class="btn btn-default col-xs-6" ng-click="cookTime.getLoc()">SET PIN</button>                       
         </div>
     </div>

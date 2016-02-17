@@ -1,7 +1,7 @@
 'use-strict'
 
 angular.module("WYA-App")
-    .controller("cookMapCtrl", function($stateParams, $state, $firebaseArray, BASE_URL, $http, Auth, $scope) {
+    .controller("cookMapCtrl", function($stateParams, $state, $firebaseArray, BASE_URL, $http, Auth) {
        var self = this;         
  
        this.confirmation = "Is this correct?"
@@ -32,15 +32,11 @@ angular.module("WYA-App")
                lat: lat,
                lng: lon,
                focus: false,
-               message: "<h4>"+ current.title + "</h4>\n<b>" + current.description + "<b>"
-            //    id: self.locations.length,
-            //    coords: {
-            //        latitude: lat,
-            //        longitude: lon
-            //    },
-            //    title: current.title,
-            //    description: current.description
-                               
+               endDate: current.endDate,
+               message: "<h4>"+ current.title + "</h4>\n<b>" + current.description + "<b>"                               
+           })
+           .then(function(ref){
+               console.log(ref.key());
            });
            self.confirmation = "You are now set"
            
@@ -49,24 +45,30 @@ angular.module("WYA-App")
        };
        
        //for the map
-       angular.extend($scope, {
-            center: {
+        this.center = {
+            lat: lat,
+            lng: lon,
+            zoom: 16
+        };
+        this.markers = {
+            marker1: {
                 lat: lat,
                 lng: lon,
-                zoom: 16
-            },
-            markers: {
-                marker1: {
-                    lat: lat,
-                    lng: lon,
-                    focus: false,
-                    message:"<h4>"+ current.title + "</h4>\n<b>" + current.description + "<b>"
-                }             
-            }
-            
-       });             
+                focus: false,
+                message:"<h4>"+ current.title + "</h4>\n<b>" + current.description + "<b>"
+            }             
+        };
+          
        
         
     })
     
+    //try to get hash
     
+    
+var list = $firebaseArray(ref); 
+list.$add({ foo: "bar" }).then(function(ref) { 
+    var id = ref.key(); 
+    console.log("added record with id " + id); 
+    list.$indexFor(id);
+ });

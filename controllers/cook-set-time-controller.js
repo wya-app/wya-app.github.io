@@ -5,16 +5,30 @@ angular.module('WYA-App')
        var self = this;
        var current = Auth.getCurrentUser();
        var ref = new Firebase(BASE_URL + 'users/' + current.uid);
-       this.title = '';
-       this.description = '';
+       this.title = current.title || '';
+       this.description = current.description || '';
+       this.endDate = current.endDate || '';
+       this.openCal = function() {
+           self.open = !self.open;
+       }
+    //    this.endDate = angular.element(document.querySelector("#endDate")).val();
        this.user = $firebaseObject(ref);
        
+       
        this.saveCookInfo = function() {
-           self.user.$add({
-               title: self.title,
-               description: self.description
-           })
-           console.log("click");
+           console.log(self.user);
+           
+           var endDate = angular.element(document.querySelector("#endDate")).val();
+           
+               self.user.title =  self.title;
+               self.user.description = self.description;
+               self.user.endDate = endDate;
+               
+               self.user.$save();
+
+           console.log(self.endDate);
+           console.log(angular.element(document.querySelector("#endDate")).val());
+
        }
        
        this.getLoc = function() {
@@ -30,3 +44,5 @@ angular.module('WYA-App')
 
     })
     
+    //assign current stand
+    //if current user.current stand has a value remove prev from firebase
