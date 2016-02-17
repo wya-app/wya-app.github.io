@@ -1,3 +1,5 @@
+'use-strict'
+
 angular.module('WYA-App')
     .controller('cookSetTimeCtrl', function($stateParams, $state, $firebaseObject, $log, BASE_URL, Auth, $http, GetLocation) {
        var self = this;

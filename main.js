@@ -13,7 +13,8 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
             })
             .state('serve-look', {
                 url: '/serve-look',
-                templateUrl: 'views/serve-look.html'
+                templateUrl: 'views/serve-look.html',
+                controller: 'getLocationCtrl as location'
             })
             
             // customer views

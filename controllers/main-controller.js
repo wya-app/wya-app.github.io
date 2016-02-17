@@ -1,3 +1,5 @@
+'use-strict'
+
 angular.module('WYA-App')
     .controller('mainCtrl', function($location, $state, Auth, $log, $timeout, $http, lodash){
         var self = this;

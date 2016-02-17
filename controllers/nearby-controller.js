@@ -16,7 +16,7 @@ angular.module("WYA-App")
        
        
        if(!$stateParams.currentLocation.lat || this.zipCode === "") {
-           $state.go('get-location');
+           $state.go('serve-look');
        }
        
        
