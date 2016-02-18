@@ -1,26 +1,30 @@
-<div class="container-fluid">
-    <div class="row-fluid map-holder">
-        <div class="col-xs-12 col-sm-6">
-            <ui-gmap-google-map center='nearby.map.center' zoom='nearby.map.zoom'>
-                
-                <ui-gmap-marker 
-                coords="nearby.marker.coords" 
-                idkey="nearby.marker.id">
-                </ui-gmap-marker>
-                
-            </ui-gmap-google-map>
-        </div>
+<nav class="navbar navbar-default navbar-static-top">
+<div class="container nav-color">
+    <a class="navbar-brand" ui-sref="serve-look">WYA</a>
+    <a class="logout navbar-brand pull-right" ng-click="main.logout()">LOG OUT</a>
+</div>
+</nav>  
+<div class="container">
+
+        <leaflet 
+        width="100%" 
+        height="480px"
+        lf-center="nearby.center"
+        markers="nearby.markers">
+        </leaflet>
+        
+        <hr class="ln-break">
+
     
-    <div class="row-fluid results-list">
-        <div class="col-xs-12 col-sm-6">
-        <h2>showing nearby stands with the zip </h2>
+    <div class="results-list">
+        <div class="col-xs-12 text-center">
+        <h2>Showing nearby stands with the zip: {{ nearby.zipCode }} </h2>
         </div>
     </div>
     
-    <button ng-click="nearby.saveLocation()" class="btn btn-default">Save location</button>
+
+
     
     
 </div>
 
-<!--ask why this isnt appearing-->
-<p>Here is your address: </p>

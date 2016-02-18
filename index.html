@@ -4,35 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Document</title>
+    <title>WYA</title>
 </head>
+    <!--vendor styles-->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+    
+    <!--mystyles-->
     <link rel="stylesheet" href="css/styles.css">
 <body ng-controller="mainCtrl as main">
+    
     <ui-view>
-
+      
     </ui-view>
     
     <!--vendors-->
     <script src="node_modules/angular/angular.min.js"></script>
+    
     <script src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>    
     <script src="node_modules/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="vendors/ui-bootstrap-tpls.js"></script>
+
+    <!--leaflet-->
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="bower_components/ui-leaflet/dist/ui-leaflet.min.js"></script> 
+    
+    <!--map-->   
+    <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
     <script src="node_modules/angular-google-maps/dist/angular-google-maps.js"></script>
     
     <!--myscripts-->
     <script src="main.js"></script>
-    <script src="auth.js"></script>
+    <!--services-->
+    <script src="services/auth.js"></script>
+    <!--factories-->
+    <script src="factories/get-location-factory.js"></script>
+    <!--controllers-->
     <script src="controllers/main-controller.js"></script>
-    <script src="controllers/cooks-controller.js"></script>
+    <script src="controllers/get-location-controller.js"></script>
     <script src="controllers/nearby-controller.js"></script>
-    <script src="controllers/cook-location-controller.js"></script>
+    <script src="controllers/cook-set-time-controller.js"></script>
+    <script src="controllers/cook-map-controller.js"></script>
     
     
 </body>    
 </html>
 
+<!--notes-->
+
+<!--
+
+page of set title and descript
+if there is info already let it be set.
+ng show ng hide 
+edit button if they have info
+
+-->

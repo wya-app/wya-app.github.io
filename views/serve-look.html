@@ -1,14 +1,21 @@
+<nav class="navbar navbar-default navbar-static-top">
+<div class="container nav-color">
+    <a class="navbar-brand" ui-sref="serve-look">WYA</a>
+    <a class="logout navbar-brand pull-right" ng-click="main.logout()">LOG OUT</a>
+</div>
+</nav>  
 <div class="serving container-fluid">
     <div class="row-fluid">
-        <div class="col-xs-12 text-center v-align">
-            <a ui-sref="set-time"><h1>COOKING</h1></a>
+        <div class="vert text-center col-xs-12">
+            <a ui-sref="cook-set-time" class="btn btn-lg col-sm-6 col-sm-offset-3 btn-default"><span class="glyphicon glyphicon-fire"></span> COOKING</a>
         </div>
     </div>
 </div>
+<hr class="ln-break">
 <div class="looking container-fluid">
     <div class="row-fluid">
-        <div class="col-xs-12 text-center v-align">
-            <a ui-sref="get-location"><h1>Looking</h1></a>
+        <div class="vert col-xs-12">
+            <a ng-click="location.getLoc()" class="btn btn-lg col-sm-6 col-sm-offset-3 btn-default"><span class="glyphicon glyphicon-eye-open"></span> LOOKING</a>
         </div>
     </div>
 </div>

@@ -8,13 +8,53 @@ $hover-color: rgba(157,70,63,0.5);
           transition: all 0.3s ease-in-out;
 }
 
+video::-webkit-media-controls {
+    display:none !important;
+}
+
+textarea {
+    resize: none;
+}
+
+a {
+    text-decoration: none;
+}
+
 html, body {
     height: 100%;
+    width: 100%;
 }
 
 body {
     background-color: #f7f7f9;
 }
+.fixed-header {
+    background-color: rgb(157,70,63);
+    h1 {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #fffff8;
+    }
+}
+
+.navbar-default {
+   -webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.175);
+   box-shadow: 0 3px 3px rgba(0,0,0,0.175);   
+   background-color: rgb(157,70,63);
+   border-color:rgb(157,70,63); 
+     .navbar-brand {
+        color: white;
+    }
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: lightgray;
+}
+
+.logout {
+  font-size: 12px;  
+}
+
 
 .main-app-header {
     // background-image: url(../images/mainpic.jpg);
@@ -45,24 +85,7 @@ body {
 
 //login page
 
-video#bgvid { 
-    position: fixed;
-    top: 25%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 75%;
-    width: auto;
-    height: 100%;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(polina.jpg) no-repeat;
-    background-size: cover;
-    opacity: .8; 
-    border-bottom: 5px solid black;
-}
+
 
 .twit-btn {
     overflow: visible;
@@ -71,21 +94,50 @@ video#bgvid {
     top: -15px;
 }
 
+.desktop-head {
+    position: relative;
+}
+
 
 // serve-look page
 
 .serving,
 .looking {
-    height: 50%;
-    position: relative;
+    .vert {
+        height: 30rem;
+        position: relative; 
+        a {
+            margin: 0;
+            padding: 100px;
+            border: 5px solid black;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+        a:hover {
+            background: $hover-color;  
+        }
+    }
 
 }
 
-.serving:hover,
-.looking:hover {
-    background: $hover-color;
-    color: white;
+
+
+.ln-break {
+    margin-top: 15px;
+    margin-botton: 15px;
+    width: 50px;
+    border-top: 5px solid rgb(157,70,63);
 }
+
+// .serving:hover,
+// .looking:hover {
+//     background: $hover-color;
+//     color: white;
+// }
 
 
 //get location page
@@ -112,4 +164,41 @@ video#bgvid {
 .results-list,
 .map-holder {
     height: 50%;
+}
+
+
+video#bgvid { 
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    min-height: 75%;
+    width: auto;
+    height: 100%;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../videos/food.jpg) no-repeat;
+    background-size: cover;
+    opacity: .8; 
+    border-bottom: 5px solid black;
+}
+
+
+@media only screen and (min-width : 768px) {
+    
+    header {
+        display: table;
+        margin: 0 auto;
+        position: relative;
+        left: -25%;
+    }
+}
+
+
+//cook set time page
+
+.control-label {
+    text-align: left !important;
 }

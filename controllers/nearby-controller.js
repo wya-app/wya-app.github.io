@@ -1,11 +1,12 @@
 'use-strict'
 
 angular.module("WYA-App")
-    .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, $http) {
+    .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, locations, $http) {
        var self = this;
-       
+    
        
        this.zipCode = $stateParams.zipCode;
+       this.address = $stateParams.curAddress;
        
        //map marking 
        var lat = $stateParams.currentLocation.lat;
@@ -13,35 +14,38 @@ angular.module("WYA-App")
        
        this.currentLocation = $stateParams.currentLocation;
        
+       
        if(!$stateParams.currentLocation.lat || this.zipCode === "") {
-           $state.go('get-location');
+           $state.go('serve-look');
        }
-       
-       this.map = {center: {latitude: lat, longitude: lon }, zoom: 14 };
-       
-       this.marker = {
-           id: 0,
-           coords: {
-                latitude: lat,
-                longitude: lon
-           }
-       }
-       
-       console.log($stateParams);
-       
-       //think about if theres empty areas with no trucks *** run a check
-       
+              
+       locations.$loaded() 
+        .then(function(results) {
+           console.log(results);
            
-        this.ref = new Firebase(BASE_URL +"food/"+ this.zipCode );
-        this.locations = $firebaseArray(this.ref);
+           if (results.length === 0) {
+               alert("no trucks here!");
+           }
+          
+           _.forEach(results, function(truck, i){
+               console.log(i);
+               if(i > results.length - 1) {
+                   return false;                   
+               } 
+               else if (new Date(truck.endDate) < Date.now()) {
+                   locations.$remove(truck);
+                    
+               }
+                          
+               self.markers = locations; 
+             
+           });
+            
+        });
         
-       this.saveLocation = function() {
-           self.locations.$add(self.currentLocation);
-       };
-       
-        
-        
-        //there should be a func that pulls the lat and lon from firebase
-        //then will be able to ng-repeat in the array and assign each a marker       
-
+            this.center = {
+                lat: lat,
+                lng: lon,
+                zoom: 16
+            };
     })
