@@ -1,0 +1,17 @@
+{
+    "gulp": {
+        "options": {
+            "pattern": [
+                "gulp-*",
+                "del"
+            ]
+        }
+        
+    },
+    "scripts": [
+        "./main.js",
+        "./controllers/*.js",
+        "./services/*.js",
+        "./factories/*.js"
+    ]       
+}
