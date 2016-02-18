@@ -8,6 +8,10 @@ $hover-color: rgba(157,70,63,0.5);
           transition: all 0.3s ease-in-out;
 }
 
+video::-webkit-media-controls {
+    display:none !important;
+}
+
 textarea {
     resize: none;
 }
@@ -47,6 +51,10 @@ body {
     color: lightgray;
 }
 
+.logout {
+  font-size: 12px;  
+}
+
 
 .main-app-header {
     // background-image: url(../images/mainpic.jpg);
@@ -77,23 +85,7 @@ body {
 
 //login page
 
-video#bgvid { 
-    position: fixed;
-    top: 25%;
-    left: 50%;
-    min-height: 75%;
-    width: auto;
-    height: 100%;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(polina.jpg) no-repeat;
-    background-size: cover;
-    opacity: .8; 
-    border-bottom: 5px solid black;
-}
+
 
 .twit-btn {
     overflow: visible;
@@ -131,6 +123,8 @@ video#bgvid {
     }
 
 }
+
+
 
 .ln-break {
     margin-top: 15px;
@@ -170,6 +164,25 @@ video#bgvid {
 .results-list,
 .map-holder {
     height: 50%;
+}
+
+
+video#bgvid { 
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    min-height: 75%;
+    width: auto;
+    height: 100%;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../videos/food.jpg) no-repeat;
+    background-size: cover;
+    opacity: .8; 
+    border-bottom: 5px solid black;
 }
 
 

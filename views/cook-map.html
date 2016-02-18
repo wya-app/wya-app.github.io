@@ -1,8 +1,9 @@
 <nav class="navbar navbar-default navbar-static-top">
-  <div class="container nav-color">
+<div class="container nav-color">
     <a class="navbar-brand" ui-sref="serve-look">WYA</a>
-  </div>
-</nav>
+    <a class="logout navbar-brand pull-right" ng-click="main.logout()">LOG OUT</a>
+</div>
+</nav>  
 <div class="container">
 
     <leaflet 
@@ -21,4 +22,6 @@
         <button ui-sref="cook-set-time" class="btn btn-default col-xs-6 col-xs-offset-3">Go Back</button>          
 
     </div>
+
+
 </div>    

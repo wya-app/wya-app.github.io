@@ -4,7 +4,8 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
     .constant('GOOGLE_MAPS_URL', "https://maps.googleapis.com/maps/api/js?key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0")
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
     .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
-        $urlRouterProvider.otherwise('/')
+        
+        $urlRouterProvider.otherwise('/login')
         
         $stateProvider
             .state('login', {
@@ -14,15 +15,16 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
             .state('serve-look', {
                 url: '/serve-look',
                 templateUrl: 'views/serve-look.html',
-                controller: 'getLocationCtrl as location'
+                controller: 'getLocationCtrl as location',
+                authenticate: true
             })
             
             // customer views
-            .state('get-location', {
-                url: '/get-location',
-                templateUrl: 'views/get-location.html',
-                controller: 'getLocationCtrl as location'
-            })
+            // .state('get-location', {
+            //     url: '/get-location',
+            //     templateUrl: 'views/get-location.html',
+            //     controller: 'getLocationCtrl as location'
+            // })
             
             .state('nearby', {
                 url: '/nearby/:zipCode',
@@ -67,4 +69,12 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
             libraries: 'weather,geometry,visualization'
         });
             
-    });
+    })
+    .run(function ($rootScope, $state, Auth) {
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+        if (toState.authenticate && !Auth.getCurrentUser()){
+            $state.go("login");
+            event.preventDefault(); 
+        }
+    })
+    });   

@@ -18,14 +18,12 @@ angular.module('WYA-App')
         }
         
         Auth.onAuth(function(userData){
-           if (userData === null) {
-               return $state.go('login');
-           } else {
-               self.user = userData;
+           if (userData) {
                return $state.go('serve-look');
-           }                   
+           } 
+           
+           return $state.go('login');
+                  
         });
-        
-
-        
+     
     })

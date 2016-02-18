@@ -1,7 +1,7 @@
 'use-strict'
 
 angular.module("WYA-App")
-    .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, locations, $http, $scope) {
+    .controller('nearbyCtrl', function($stateParams, $state, $firebaseArray, BASE_URL, locations, $http) {
        var self = this;
     
        
@@ -18,32 +18,34 @@ angular.module("WYA-App")
        if(!$stateParams.currentLocation.lat || this.zipCode === "") {
            $state.go('serve-look');
        }
-       
-       
+              
        locations.$loaded() 
-       //if array empty have some kind of return (like go back to prev route)
         .then(function(results) {
-            
            console.log(results);
            
-           self.data = results;
            if (results.length === 0) {
                alert("no trucks here!");
            }
-           self.markers = self.data;               
+          
+           _.forEach(results, function(truck, i){
+               console.log(i);
+               if(i > results.length - 1) {
+                   return false;                   
+               } 
+               else if (new Date(truck.endDate) < Date.now()) {
+                   locations.$remove(truck);
+                    
+               }
+                          
+               self.markers = locations; 
+             
+           });
+            
         });
         
-       console.log(this.data);
-
-       
             this.center = {
                 lat: lat,
                 lng: lon,
                 zoom: 16
             };
-            
-
-       
-        
-
     })

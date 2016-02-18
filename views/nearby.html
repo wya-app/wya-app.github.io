@@ -1,8 +1,9 @@
 <nav class="navbar navbar-default navbar-static-top">
-  <div class="container nav-color">
+<div class="container nav-color">
     <a class="navbar-brand" ui-sref="serve-look">WYA</a>
-  </div>
-</nav>
+    <a class="logout navbar-brand pull-right" ng-click="main.logout()">LOG OUT</a>
+</div>
+</nav>  
 <div class="container">
 
         <leaflet 
@@ -18,9 +19,7 @@
     <div class="results-list">
         <div class="col-xs-12 text-center">
         <h2>Showing nearby stands with the zip: {{ nearby.zipCode }} </h2>
-        <p>Current Address: {{ nearby.address }} </p>
         </div>
-        <!--<button ng-click="nearby.saveLocation()" class="btn btn-default">Save location</button>-->
     </div>
     
 

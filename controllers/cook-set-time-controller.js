@@ -8,27 +8,30 @@ angular.module('WYA-App')
        this.title = current.title || '';
        this.description = current.description || '';
        this.endDate = current.endDate || '';
+       this.saveBut = "SAVE INFO";
        this.openCal = function() {
            self.open = !self.open;
        }
-    //    this.endDate = angular.element(document.querySelector("#endDate")).val();
        this.user = $firebaseObject(ref);
        
        
        this.saveCookInfo = function() {
-           console.log(self.user);
-           
-           var endDate = angular.element(document.querySelector("#endDate")).val();
-           
-               self.user.title =  self.title;
-               self.user.description = self.description;
-               self.user.endDate = endDate;
-               
-               self.user.$save();
 
-           console.log(self.endDate);
-           console.log(angular.element(document.querySelector("#endDate")).val());
+            console.log(self.user);
 
+            var endDate = angular.element(document.querySelector("#endDate")).val();
+
+            self.user.title =  self.title;
+            self.user.description = self.description;
+            self.user.endDate = endDate;
+
+            self.user.$save();
+
+            console.log(self.endDate);
+            console.log(angular.element(document.querySelector("#endDate")).val());
+            
+            self.saveBut = "SAVED !";
+            
        }
        
        this.getLoc = function() {
@@ -40,9 +43,4 @@ angular.module('WYA-App')
        
        console.log(current.uid);
        
-       
-
     })
-    
-    //assign current stand
-    //if current user.current stand has a value remove prev from firebase

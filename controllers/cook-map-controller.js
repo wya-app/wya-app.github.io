@@ -1,7 +1,7 @@
 'use-strict'
 
 angular.module("WYA-App")
-    .controller("cookMapCtrl", function($stateParams, $state, $firebaseArray, BASE_URL, $http, Auth) {
+    .controller("cookMapCtrl", function($stateParams, $state, $firebaseArray, BASE_URL, $http, Auth, $firebaseObject) {
        var self = this;         
  
        this.confirmation = "Is this correct?"
@@ -24,25 +24,42 @@ angular.module("WYA-App")
        this.ref = new Firebase(BASE_URL +"food/"+ this.zipCode);
        this.locations = $firebaseArray(this.ref);
        
-       var current = Auth.getCurrentUser(); 
+       var current = Auth.getCurrentUser();
+       var user = $firebaseObject(new Firebase(BASE_URL +"users/"+current.uid)); 
         
-               
+       //Save info to firebase        
        this.saveLocation = function() {
-           self.locations.$add({
-               lat: lat,
-               lng: lon,
-               focus: false,
-               endDate: current.endDate,
-               message: "<h4>"+ current.title + "</h4>\n<b>" + current.description + "<b>"                               
+           if (user.cooksPin && user.cooksPin.zip) {
+              removePin();              
+           }           
+           self.locations.$add({               
+                lat: lat,
+                lng: lon,
+                focus: false,
+                endDate: current.endDate,
+                message:"<h3><u>"+ current.title + "</u></h3>\n<b>Description:</b> " + current.description + "<br><b>End date: </b> " + current.endDate   
+                                
            })
-           .then(function(ref){
-               console.log(ref.key());
+           .then(function(ref){               
+               updateUser(ref);
            });
            self.confirmation = "You are now set"
-           
-        console.log(self.locations.length);
-        console.log($firebaseArray(self.ref));
        };
+       
+       function updateUser(ref) {
+            user.cooksPin = {
+                zip: self.zipCode,
+                hash: ref.key()
+            }
+                
+            user.$save();           
+       }
+       
+       function removePin() {
+            var oldPin = $firebaseObject(new Firebase(BASE_URL + "food/"+ user.cooksPin.zip+"/"+ user.cooksPin.hash));
+            
+            oldPin.$remove();                  
+       }
        
        //for the map
         this.center = {
@@ -55,7 +72,7 @@ angular.module("WYA-App")
                 lat: lat,
                 lng: lon,
                 focus: false,
-                message:"<h4>"+ current.title + "</h4>\n<b>" + current.description + "<b>"
+                message:"<h3><u>"+ current.title + "</u></h3>\n<b>Description:</b> " + current.description + "<br><b>End date: </b> " + current.endDate
             }             
         };
           
@@ -63,12 +80,3 @@ angular.module("WYA-App")
         
     })
     
-    //try to get hash
-    
-    
-var list = $firebaseArray(ref); 
-list.$add({ foo: "bar" }).then(function(ref) { 
-    var id = ref.key(); 
-    console.log("added record with id " + id); 
-    list.$indexFor(id);
- });
