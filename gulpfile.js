@@ -13,7 +13,6 @@ var ngHtml2Js = require('gulp-ng-html2js');
 var merge = require('merge-stream');
 
 
-
 var paths = {
     scss: './scss/*.scss',
     html: './*.html',
@@ -36,10 +35,9 @@ gulp.task('serve', ['sass'], function() {
 //compile sass
 gulp.task('sass', function () {
     return gulp.src(paths.scss)
-        .pipe($.sass({
-            includePaths: ['sass']
-        }))
-        .pipe(gulp.dest('./.tmp/css'))
+        .pipe($.sass()) 
+        .pipe(minifyCss()) 
+        .pipe(gulp.dest('dist/css'))    
         .pipe(browserSync.stream());
 });
 

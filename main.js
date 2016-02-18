@@ -1,38 +1,39 @@
 'use-strict'
 
-angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','uiGmapgoogle-maps','ngLodash','ngMap','ui-leaflet' ])
-    .constant('GOOGLE_MAPS_URL', "https://maps.googleapis.com/maps/api/js?key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0")
+angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ngLodash','ui-leaflet' ])
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
-    .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+    .config(function($stateProvider, $urlRouterProvider) {
         
         $urlRouterProvider.otherwise('/login')
         
         $stateProvider
             .state('login', {
                 url: '/login',
-                templateUrl: 'views/login.html'
+                // templateUrl: 'views/login.html'
+                templateProvider: function($templateCache) { 
+                    return $templateCache.get('login.html'); 
+                }                
             })
+            
             .state('serve-look', {
                 url: '/serve-look',
-                templateUrl: 'views/serve-look.html',
+                templateProvider: function($templateCache) { 
+                    return $templateCache.get('serve-look.html'); 
+                },                  
                 controller: 'getLocationCtrl as location',
                 authenticate: true
             })
-            
-            // customer views
-            // .state('get-location', {
-            //     url: '/get-location',
-            //     templateUrl: 'views/get-location.html',
-            //     controller: 'getLocationCtrl as location'
-            // })
-            
+
             .state('nearby', {
                 url: '/nearby/:zipCode',
-                templateUrl: 'views/nearby.html',
+                templateProvider: function($templateCache) { 
+                    return $templateCache.get('nearby.html'); 
+                },                  
                 params: {
                     currentLocation: {}
                 },
                 controller: 'nearbyCtrl as nearby',
+                authenticate: true,                
                 resolve: {
                     locations: function($stateParams, $firebaseArray, BASE_URL) {
                        var ref = new Firebase(BASE_URL +"food/"+ $stateParams.zipCode );
@@ -45,30 +46,29 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ui
             // cook views
             .state('cook-map', {
                 url: '/cook-map/:zipCode',
-                templateUrl: 'views/cook-map.html',
+                templateProvider: function($templateCache) { 
+                    return $templateCache.get('cook-map.html'); 
+                },                  
                 params: {
                   currentLocation: {}  
                 },
-                controller: 'cookMapCtrl as cookMap'
+                controller: 'cookMapCtrl as cookMap',
+                authenticate: true,                                
                 
             })
             
             .state('cook-set-time', {
                 url: '/cook-set-time',
-                templateUrl: 'views/cook-set-time.html',
+                templateProvider: function($templateCache) { 
+                    return $templateCache.get('cook-set-time.html'); 
+                },                  
                 params: {
                   currentLocation: {}  
                 },
-                controller: 'cookSetTimeCtrl as cookTime'
+                controller: 'cookSetTimeCtrl as cookTime',
+                authenticate: true,                                
             })
                                
-       
-        uiGmapGoogleMapApiProvider.configure({
-            key: 'AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0',
-            v: '3.20', //defaults to latest 3.X anyhow
-            libraries: 'weather,geometry,visualization'
-        });
-            
     })
     .run(function ($rootScope, $state, Auth) {
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
