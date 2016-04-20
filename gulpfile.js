@@ -35,9 +35,9 @@ gulp.task('serve', ['sass'], function() {
 //compile sass
 gulp.task('sass', function () {
     return gulp.src(paths.scss)
-        .pipe($.sass()) 
-        .pipe(minifyCss()) 
-        .pipe(gulp.dest('dist/css'))    
+        .pipe($.sass())
+        .pipe(minifyCss())
+        .pipe(gulp.dest('dist/css'))
         .pipe(browserSync.stream());
 });
 
@@ -72,11 +72,11 @@ gulp.task('views', function(){
 gulp.task('assets', function() {
     var vids = gulp.src('./videos/*')
     .pipe(gulp.dest('dist/videos'));
-    
+
     var img = gulp.src('./images/*')
     .pipe($.imagemin())
     .pipe(gulp.dest('dist/images'));
-    
+
     return merge(vids, img);
 });
 
@@ -109,7 +109,7 @@ gulp.task('build', function(done){
         'views',
         'assets',
         'serve',
-        done     
+        done
     )
 });
 
