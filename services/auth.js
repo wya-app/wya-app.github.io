@@ -1,4 +1,4 @@
-'use-strict'
+'use strict'
 
 angular.module('WYA-App')
     .factory('Auth', function(BASE_URL, $firebaseObject){
@@ -14,7 +14,7 @@ angular.module('WYA-App')
                 user.update({
                     uid: userData.uid,
                     displayName: userData.twitter.username,
-                    userDesc: userData.twitter.cachedUserProfile.description                
+                    userDesc: userData.twitter.cachedUserProfile.description
                 });
             } else {
                user.update({
@@ -25,15 +25,15 @@ angular.module('WYA-App')
 
             user = $firebaseObject(user);
             currentUser = user;
-            
+
             return user;
-        }        
+        }
         return {
             tLogin: function(){
                 ref.authWithOAuthPopup("twitter", function(error, authData) {
                     if(error) {
                         console.log(error);
-                
+
                     } else {
                         console.log(authData);
                     }
@@ -50,13 +50,13 @@ angular.module('WYA-App')
             },
             logOut: function() {
                 ref.unauth()
-            },   
+            },
             onAuth: function(cb) {
                 ref.onAuth(function(userData) {
                     cb(updateUser(userData));
                 })
             },
-            
+
             getCurrentUser: function() {
                 return currentUser;
             },

@@ -4,7 +4,7 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ng
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
     .config(function($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/login')
+        $urlRouterProvider.otherwise('/welcome')
 
         $stateProvider
             .state('welcome', {
@@ -79,7 +79,7 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ng
     .run(function ($rootScope, $state, Auth) {
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
         if (toState.authenticate && !Auth.getCurrentUser()){
-            $state.go("welcome");
+            $state.go("nearby");
             event.preventDefault();
         }
     })
