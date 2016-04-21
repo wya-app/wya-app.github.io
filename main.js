@@ -4,22 +4,16 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ng
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
     .config(function($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/welcome')
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('welcome', {
-                url: '/welcome',
+            .state('home', {
+                url: '/',
                 templateProvider: function($templateCache) {
                     return $templateCache.get('welcome.html');
                 }
             })
-            .state('login', {
-                url: '/login',
-                // templateUrl: 'views/login.html'
-                templateProvider: function($templateCache) {
-                    return $templateCache.get('login.html');
-                }
-            })
+
 
             .state('serve-look', {
                 url: '/serve-look',
@@ -75,12 +69,20 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ng
                 authenticate: true,
             })
 
+            .state('login', {
+                url: '/login',
+                templateUrl: 'login.html'
+                // templateProvider: function($templateCache) {
+                //     return $templateCache.get('login.html');
+                // }
+            })
+
     })
-    .run(function ($rootScope, $state, Auth) {
-    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-        if (toState.authenticate && !Auth.getCurrentUser()){
-            $state.go("nearby");
-            event.preventDefault();
-        }
-    })
-    });
+    // .run(function ($rootScope, $state, Auth) {
+    // $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+    //     if (toState.authenticate && !Auth.getCurrentUser()){
+    //         $state.go("/");
+    //         event.preventDefault();
+    //     }
+    // })
+    // });

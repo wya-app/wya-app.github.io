@@ -8,14 +8,20 @@
         </div>
     </div>
     <div class="container">
-        <div class="row twit-btn">
+        <div class="row read-btn">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-                <button ng-click='main.twitterAuth()' class="btn btn-main btn-block">Twitter Login</button>
+                <button ui-sref='home' class="btn btn-main">Read Me First </button>
             </div>
         </div>
-        <div class="row fb-btn">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+        <div class="row twit-btn">
+            <div class="col-xs-6">
+                <button ng-click='main.twitterAuth()' class="btn btn-main btn-block">Twitter Login</button>
+
+            </div>
+            <div class="col-xs-6">
                 <button ng-click='main.faceBookAuth()' class="btn btn-main btn-block">Facebook Login</button>
             </div>
+        </div>
+
         </div>
     </div>
