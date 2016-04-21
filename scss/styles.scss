@@ -3,7 +3,7 @@ $hover-color: rgba(157,70,63,0.5);
 *, *::before, *::after{
   -moz-box-sizing: border-box;
        box-sizing: border-box;
-  
+
   -webkit-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
 }
@@ -39,9 +39,9 @@ body {
 
 .navbar-default {
    -webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.175);
-   box-shadow: 0 3px 3px rgba(0,0,0,0.175);   
+   box-shadow: 0 3px 3px rgba(0,0,0,0.175);
    background-color: rgb(157,70,63);
-   border-color:rgb(157,70,63); 
+   border-color:rgb(157,70,63);
      .navbar-brand {
         color: white;
     }
@@ -52,7 +52,7 @@ body {
 }
 
 .logout {
-  font-size: 12px;  
+  font-size: 12px;
 }
 
 
@@ -63,7 +63,7 @@ body {
     background-size: cover;
     height: 75%;
     h1 {
-        
+
         position: absolute;
         top:5%;
         left: 25px;
@@ -105,7 +105,7 @@ body {
 .looking {
     .vert {
         height: 30rem;
-        position: relative; 
+        position: relative;
         a {
             margin: 0;
             padding: 100px;
@@ -118,7 +118,7 @@ body {
             transform: translate(-50%, -50%);
         }
         a:hover {
-            background: $hover-color;  
+            background: $hover-color;
         }
     }
 
@@ -167,7 +167,7 @@ body {
 }
 
 
-video#bgvid { 
+video#bgvid {
     position: fixed;
     top: 25%;
     left: 50%;
@@ -181,13 +181,13 @@ video#bgvid {
     transform: translateX(-50%) translateY(-50%);
     background: url(../videos/food.jpg) no-repeat;
     background-size: cover;
-    opacity: .8; 
+    opacity: .8;
     border-bottom: 5px solid black;
 }
 
 
 @media only screen and (min-width : 768px) {
-    
+
     header {
         display: table;
         margin: 0 auto;
@@ -201,4 +201,11 @@ video#bgvid {
 
 .control-label {
     text-align: left !important;
+}
+
+
+//welcome
+
+#welcome {
+    margin-top: 25px;
 }

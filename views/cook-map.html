@@ -3,11 +3,11 @@
     <a class="navbar-brand" ui-sref="serve-look">WYA</a>
     <a class="logout navbar-brand pull-right" ng-click="main.logout()">LOG OUT</a>
 </div>
-</nav>  
+</nav>
 <div class="container">
 
-    <leaflet 
-    width="100%" 
+    <leaflet
+    width="100%"
     height="480px"
     lf-center="cookMap.center"
     markers="cookMap.markers">
@@ -18,10 +18,10 @@
         <h2>{{cookMap.confirmation}}</h2>
         </div>
         <hr class="ln-break">
-        <button ng-click="cookMap.saveLocation()" class="btn btn-default col-xs-6 col-xs-offset-3">Confirm Location</button>            
-        <button ui-sref="cook-set-time" class="btn btn-default col-xs-6 col-xs-offset-3">Go Back</button>          
+        <button ng-click="cookMap.saveLocation()" class="btn btn-default col-xs-6 col-xs-offset-3">Confirm Location</button>
+        <button ui-sref="cook-set-time" class="btn btn-default col-xs-6 col-xs-offset-3">Go Back</button>
 
     </div>
 
 
-</div>    
+</div>

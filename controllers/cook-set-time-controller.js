@@ -1,4 +1,4 @@
-'use-strict'
+'use strict'
 
 angular.module('WYA-App')
     .controller('cookSetTimeCtrl', function($stateParams, $state, $firebaseObject, $log, BASE_URL, Auth, $http, GetLocation) {
@@ -13,8 +13,8 @@ angular.module('WYA-App')
            self.open = !self.open;
        }
        this.user = $firebaseObject(ref);
-       
-       
+
+
        this.saveCookInfo = function() {
 
             console.log(self.user);
@@ -29,18 +29,18 @@ angular.module('WYA-App')
 
             console.log(self.endDate);
             console.log(angular.element(document.querySelector("#endDate")).val());
-            
+
             self.saveBut = "SAVED !";
-            
+
        }
-       
+
        this.getLoc = function() {
            if (!self.user.title || !self.user.description) {
                return alert("Please enter a title and description");
            }
             GetLocation.getLocation('cook-map');
        }
-       
+
        console.log(current.uid);
-       
+
     })
