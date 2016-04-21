@@ -4,22 +4,16 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ng
     .constant('BASE_URL', "https://resplendent-fire-801.firebaseio.com/")
     .config(function($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/welcome')
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('welcome', {
-                url: '/welcome',
+            .state('home', {
+                url: '/',
                 templateProvider: function($templateCache) {
                     return $templateCache.get('welcome.html');
                 }
             })
-            .state('login', {
-                url: '/login',
-                // templateUrl: 'views/login.html'
-                templateProvider: function($templateCache) {
-                    return $templateCache.get('login.html');
-                }
-            })
+
 
             .state('serve-look', {
                 url: '/serve-look',
@@ -75,15 +69,23 @@ angular.module('WYA-App', ['ui.router','ngAnimate','ui.bootstrap','firebase','ng
                 authenticate: true,
             })
 
+            .state('login', {
+                url: '/login',
+                templateUrl: 'login.html'
+                // templateProvider: function($templateCache) {
+                //     return $templateCache.get('login.html');
+                // }
+            })
+
     })
-    .run(function ($rootScope, $state, Auth) {
-    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-        if (toState.authenticate && !Auth.getCurrentUser()){
-            $state.go("nearby");
-            event.preventDefault();
-        }
-    })
-    });
+    // .run(function ($rootScope, $state, Auth) {
+    // $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+    //     if (toState.authenticate && !Auth.getCurrentUser()){
+    //         $state.go("/");
+    //         event.preventDefault();
+    //     }
+    // })
+    // });
 
 'use strict'
 
@@ -156,36 +158,33 @@ angular.module('WYA-App')
 angular.module("WYA-App")
     .factory("GetLocation", function($state,$http) {
         return {
-       
                 //gets the current location with lon and lat
                 getLocation : function(stateGo) {
                     navigator.geolocation.getCurrentPosition(function(position) {
                         console.log(position);
-                        
-                                    
+
                     var currentPosition = {
                         lat: position.coords.latitude,
                         lon: position.coords.longitude
 
                     }
-                    
+
                     var lat = currentPosition.lat;
                     var lon = currentPosition.lon;
                     var zip = "";
-                    var address = "";           
-                    
+                    var address = "";
+
                         $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lon+'&key=AIzaSyBGUmHjmyMHQBMmKnVW7yE5DRpSeQqDbE0').then(function successCallback(response) {
-                            
-                        var addressComponents = response.data.results[0].address_components;                 
-                                                       
-                        
+
+                        var addressComponents = response.data.results[0].address_components;
+
                         _.forEach(addressComponents, function(value){
                                 if (value.types[0] === 'postal_code') {
                                     console.log(value);
                                     zip = value.long_name;
                                 }
                         });
-                        
+
                         address= response.data.results[0].formatted_address;
 
                             //needs error check vvv
@@ -193,17 +192,18 @@ angular.module("WYA-App")
                                 currentLocation: currentPosition,
                                 zipCode: zip,
                                 curAddress: address
-                            });       
-                            
+                            });
+
                         }, function errorCallback(response) {
                             console.log('failed to get');
-                        });           
+                        });
 
-                    });          
-                }                  
+                    });
+                }
 
         }
     })
+
 'use strict'
 
 angular.module('WYA-App')
